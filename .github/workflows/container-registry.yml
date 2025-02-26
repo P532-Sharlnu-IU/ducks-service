@@ -34,5 +34,5 @@ jobs:
       - name: Build and push the image
         run: |
           docker login --username Sharlnu-IU --password ${{secrets.ACCESS_TOKEN}} ghcr.io
-          docker build -t ghcr.io/Sharlnu-IU/ducks-service:latest --file Dockerfile .  
-          docker push ghcr.io/Sharlnu-IU/ducks-service:latest
+          docker build -t ghcr.io/sharlnu-iu/ducks-service:latest --file Dockerfile .  
+          docker push ghcr.io/sharlnu-iu/ducks-service:latest
