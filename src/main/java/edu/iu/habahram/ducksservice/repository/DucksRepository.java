@@ -27,7 +27,7 @@ public class DucksRepository {
             ducksAudioDirectory.mkdirs();
         }
 
-        File databaseFile = new File("ducks/db.txt"); //sharath
+        File databaseFile = new File("ducks/db.txt");
         if (!databaseFile.exists()) {
             try {
                 databaseFile.createNewFile();
