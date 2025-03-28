@@ -50,7 +50,7 @@ public class DuckController {
     public ResponseEntity<DuckData> find(@PathVariable int id) {
         try {
             Optional<DuckData> duck = ducksDBRepository.findById(id);
-            if(duck.isEmpty()) {
+            if(duck.isPresent()) {
                 return ResponseEntity
                         .status(HttpStatus.FOUND)
                         .body(duck.get());
@@ -104,6 +104,19 @@ public class DuckController {
                     .contentType(MediaType.valueOf("audio/mp3"))
                     .body(image);
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<DuckData>> searchByType(@RequestParam String type) {
+        try {
+            List<DuckData> ducks = ducksDBRepository.findByTypeIgnoreCase(type);
+            if (ducks.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            return ResponseEntity.ok(ducks);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
