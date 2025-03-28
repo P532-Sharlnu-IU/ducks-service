@@ -19,7 +19,7 @@ class DuckTest {
         String line = "1,mallardly,Mallard";
         DuckData expected = new DuckData(1,"mallardly", DuckType.MALLARD.toString());
         DuckData duck = DuckData.fromLine(line);
-        assertEquals(expected.id(), duck.id());
-        assertEquals(expected.type(), duck.type());
+        assertEquals(expected.getId(), duck.getId());
+        assertEquals(expected.getType(), duck.getType());
     }
 }
